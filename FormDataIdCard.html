@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Id card Using Form Data</title>
+    <style>
+        fieldset{
+            height: 250px;
+            width: 400px;
+            
+        }
+    </style>
+</head>
+<body>
+    <fieldset  style="text-align: center;">
+        <legend style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Student Form</legend>
+    <form id="myform" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" placeholder="Enter First Name" ><br><br>
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" placeholder="Enter Last name" ><br><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" placeholder="Enter age" ><br><br>
+        <label for="date">Date of Birth:</label>
+        <input type="date" id="date" ><br><br>
+        <label for="stdid">Student ID:</label>
+        <input type="text" id="stdid"  placeholder="Enter Student ID"><br><br>
+        <input type="submit"> <br><br>
+        </fieldset>
+        <script>
+            let myf=document.getElementById("myform");
+            myf.addEventListener("submit",(e)=>{
+                e.preventDefault();
+                let mydiv=document.createElement("div");
+                mydiv.style.border="5px solid black";
+                mydiv.style.display="flex";
+                mydiv.style.flexDirection="column";
+                mydiv.style.textAlign="centre";
+                mydiv.style.justifyItems="centre";
+                mydiv.style.alignItems="centre";
+                mydiv.style.rowGap="3px";
+                mydiv.style.backgroundImage="url('IDcardbg.jpg')";
+                mydiv.style.backgroundSize="cover";
+                mydiv.style.backgroundRepeat="no-repeat";
+                mydiv.style.height="300px";
+                mydiv.style.width="200px";
+                mydiv.style.padding="35px";
+                mydiv.style.borderRadius="20px";
+                mydiv.style.fontFamily="Trebuchet MS";
+                mydiv.style.margin="10px 0px 0px 50px";
+                
+
+
+                let fname=document.getElementById("fname").value;
+                let lname=document.getElementById("lname").value;
+                let age=parseInt(document.getElementById("age").value);
+                let date=document.getElementById("date").value;
+                let stdid=document.getElementById("stdid").value;
+
+                let cname=document.createElement("h2");
+                cname.style.marginTop="-15px";
+                let Fnam=document.createElement("span");
+                let Lnam=document.createElement("span");
+                let Ag=document.createElement("span");
+                let DOB=document.createElement("span");
+                let ID=document.createElement("span");
+                let profilepic=document.createElement("img");
+
+                profilepic.setAttribute("src","profilepic.png");
+                profilepic.style.height="150px";
+                profilepic.style.width="200px";
+
+                cname.innerHTML="Company: Google";
+                Fnam.innerHTML=`<b>First Name:  ${fname}<b>`;
+                Lnam.innerHTML=`<b>Last Name:  ${lname}<b>`;
+                Ag.innerHTML=`<b>Age:  ${age}<b>`;
+                DOB.innerHTML=`<b>Date of Birth:  ${date}<b>`;
+                ID.innerHTML=`<b>Student ID:  ${stdid}<b>`;
+
+
+                
+                
+                // mydiv.innerHTML=`${fname} <br> ${lname} <br> ${age} <br> ${date} <br> ${stdid}`
+                
+                mydiv.appendChild(cname);
+                mydiv.appendChild(profilepic);
+                mydiv.appendChild(Fnam);
+                mydiv.appendChild(Lnam);
+                mydiv.appendChild(Ag);
+                mydiv.appendChild(DOB);
+                mydiv.appendChild(ID);
+                document.body.appendChild(mydiv);
+
+                mydiv.addEventListener("mouseover",(enn)=>{
+                    enn.preventDefault();
+                    mydiv.style.transform="scale(1.05)";
+                    mydiv.style.transitionDuration="0.7s";
+                    mydiv.style.transitionTimingFunction="ease";
+                });
+                 mydiv.addEventListener("mouseleave",(err)=>{
+                    err.preventDefault();
+                    mydiv.style.transform="scale(1)";
+                    mydiv.style.transitionDuration="0.5s";
+                    mydiv.style.transitionTimingFunction="linear";
+                 }
+                )
+            })
+        </script>
+    </form>
+</body>
+</html>
